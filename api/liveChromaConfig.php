@@ -6,7 +6,7 @@ use Photobooth\Service\LoggerService;
 
 header('Content-Type: application/json');
 
-$cmd = 'python3 cameracontrol.py';
+$cmd = 'sudo -n /usr/local/bin/fix-camera-perms.sh; python3 cameracontrol.py';
 if ($_POST['chromaImage']) {
     $cmd .= ' --chromaImage ' . escapeshellarg($_POST['chromaImage']);
 }

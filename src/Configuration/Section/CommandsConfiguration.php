@@ -27,10 +27,10 @@ final class CommandsConfiguration
                 'post_photo'    => '',
             ],
             'linux' => [
-                'take_picture'  => 'gphoto2 --capture-image-and-download --filename=%s',
+                'take_picture'  => 'sudo -n /usr/local/bin/fix-camera-perms.sh; gphoto2 --capture-image-and-download --filename=%s',
                 'take_collage'  => '',
-                'take_video'    => 'python3 cameracontrol.py -v %s --vlen 3 --vframes 4',
-                'take_custom'   => 'python3 cameracontrol.py --chromaImage=/var/www/html/resources/img/bg.jpg --chromaColor 00ff00 --chromaSensitivity 0.4 --chromaBlend 0.1 --capture-image-and-download %s',
+                'take_video'    => 'sudo -n /usr/local/bin/fix-camera-perms.sh; python3 cameracontrol.py -v %s --vlen 3 --vframes 4',
+                'take_custom'   => 'sudo -n /usr/local/bin/fix-camera-perms.sh; python3 cameracontrol.py --chromaImage=/var/www/html/resources/img/bg.jpg --chromaColor 00ff00 --chromaSensitivity 0.4 --chromaBlend 0.1 --capture-image-and-download %s',
                 'print'         => 'lp -o landscape -o fit-to-page %s',
                 'exiftool'      => 'exiftool -overwrite_original -TagsFromFile %s %s',
                 'nodebin'       => '/usr/bin/node',

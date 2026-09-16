@@ -1,10 +1,10 @@
-version: "3.9"
 
 services:
   photobooth:
     build: .
+    privileged: true  # required for USB device access
+    group_add:
+      - "0"  # let the non-root "application" user access root:root-owned /dev/bus/usb nodes
     ports:
       - "80:80"
       - "443:443"
-    environment:
-      - COMPOSER_VERSION=2
