@@ -100,6 +100,19 @@ if ($config['ui']['selfie_mode']) {
 <script src="<?=$assetService->getUrl('resources/js/virtualKeyboard.js')?>"></script>
     <script src="<?=$assetService->getUrl('resources/js/screensaver.js')?>"></script>
     <script src="<?=$assetService->getUrl('resources/js/core.js')?>"></script>
+    <script>
+        $(document).on('keyup', function (event) {
+            if (event.key !== '&') {
+                return;
+            }
+
+            if (photoBooth.takingPic) {
+                photoBooth.handleButtonPressWhileTakingPic();
+            } else if (config.picture.enabled) {
+                photoBooth.thrill('photo');
+            }
+        });
+    </script>
 
 <?php include PathUtility::getAbsolutePath('template/components/start.adminshortcut.php'); ?>
 <?php ProcessService::getInstance()->boot(); ?>
